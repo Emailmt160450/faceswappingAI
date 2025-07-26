@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FaceSwap AI | Free AI Face Swapping</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #6c63ff;
+            --primary-dark: #5a52e0;
+            --secondary: #ff6584;
+            --dark: #1e1e2d;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --success: #28a745;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1e1e2d, #2d2d44);
+            color: var(--light);
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(108, 99, 255, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(255, 101, 132, 0.1) 0%, transparent 20%);
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            padding: 20px 0;
+            background: rgba(30, 30, 45, 0.8);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--light);
+        }
+
+        .logo i {
+            color: var(--primary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+            outline: none;
+            font-size: 1rem;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(108, 99, 255, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 100px 0 70px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            color: #d0d0e0;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .btn-secondary {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #e55a76;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(255, 101, 132, 0.3);
+        }
+
+        .features {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+
+        .feature {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            width: 250px;
+            text-align: center;
+            transition: transform 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .feature:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .feature i {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .feature h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        /* Face Swap Section */
+        .face-swap {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            font-size: 2.5rem;
+        }
+
+        .swap-container {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .swap-interface {
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .upload-area {
+            flex: 1;
+            text-align: center;
+        }
+
+        .upload-box {
+            height: 300px;
+            border: 2px dashed rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .upload-box:hover {
+            border-color: var(--primary);
+        }
+
+        .upload-box i {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .upload-box h3 {
+            margin-bottom: 10px;
+        }
+
+        .upload-box p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .preview-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: none;
+        }
+
+        .swap-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--primary);
+        }
+
+        .swap-controls {
+            text-align: center;
+        }
+
+        .result-container {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .result-image {
+            max-width: 100%;
+            border-radius: 15px;
+            display: none;
+            margin: 0 auto 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .download-btn {
+            display: none;
+            margin: 0 auto;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 100px 0;
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .pricing-plans {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+
+        .plan {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px 30px;
+            width: 300px;
+            text-align: center;
+            transition: transform 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .plan.popular {
+            border: 2px solid var(--primary);
+            transform: scale(1.05);
+            position: relative;
+        }
+
+        .popular-tag {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: white;
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .plan h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .plan .price {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .plan .price span {
+            font-size: 1rem;
+            color: var(--gray);
+        }
+
+        .plan ul {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .plan ul li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .plan ul li:last-child {
+            border-bottom: none;
+        }
+
+        .plan ul li i {
+            margin-right: 10px;
+            color: var(--success);
+        }
+
+        /* Footer */
+        footer {
+            padding: 70px 0 30px;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-col {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--primary);
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 15px;
+        }
+
+        .footer-col ul li a {
+            color: #d0d0e0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--primary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--gray);
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .swap-interface {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .swap-arrow {
+                transform: rotate(90deg);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .swap-container {
+                padding: 20px;
+            }
+            
+            .features, .pricing-plans {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .auth-buttons {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-sync-alt"></i>
+                    <span>FaceSwap AI</span>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#swap">Face Swap</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#about">About</a></li>
+                    </ul>
+                </nav>
+                <div class="auth-buttons">
+                    <button class="btn btn-outline">Sign In</button>
+                    <button class="btn btn-primary">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Swap Faces with AI Influencers in Seconds</h1>
+            <p>Experience the most realistic face swapping technology for free. Create hilarious memes, viral content, and professional media with our AI-powered platform.</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary">Swap Faces Now</button>
+                <button class="btn btn-secondary">View Examples</button>
+            </div>
+            
+            <div class="features">
+                <div class="feature">
+                    <i class="fas fa-bolt"></i>
+                    <h3>Lightning Fast</h3>
+                    <p>Swap faces in under 10 seconds with our optimized AI</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-lock-open"></i>
+                    <h3>Free to Use</h3>
+                    <p>Unlimited swaps with our free tier. No credit card needed</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Privacy Focused</h3>
+                    <p>Your images are never stored or shared with anyone</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Face Swap Section -->
+    <section class="face-swap" id="swap">
+        <div class="container">
+            <h2 class="section-title">AI Face Swap Generator</h2>
+            <div class="swap-container">
+                <div class="swap-interface">
+                    <div class="upload-area">
+                        <h3>Upload Your Photo</h3>
+                        <div class="upload-box" id="source-upload">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <h3>Drag & Drop</h3>
+                            <p>or click to browse</p>
+                            <img class="preview-image" id="source-preview" src="" alt="Source Preview">
+                        </div>
+                        <button class="btn btn-outline" id="source-btn">Choose File</button>
+                    </div>
+                    
+                    <div class="swap-arrow">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    
+                    <div class="upload-area">
+                        <h3>Choose AI Influencer</h3>
+                        <div class="upload-box" id="target-upload">
+                            <i class="fas fa-user-circle"></i>
+                            <h3>Select Influencer</h3>
+                            <p>or upload your own</p>
+                            <img class="preview-image" id="target-preview" src="" alt="Target Preview">
+                        </div>
+                        <button class="btn btn-outline" id="target-btn">Select Influencer</button>
+                    </div>
+                </div>
+                
+                <div class="swap-controls">
+                    <button class="btn btn-primary" id="swap-btn">Swap Faces Now</button>
+                    <div class="result-container">
+                        <img class="result-image" id="result-image" src="" alt="Result">
+                        <button class="btn btn-secondary download-btn" id="download-btn">
+                            <i class="fas fa-download"></i> Download Result
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2 class="section-title">Simple & Transparent Pricing</h2>
+            <div class="pricing-plans">
+                <div class="plan">
+                    <h3>Free Tier</h3>
+                    <div class="price">$0<span>/month</span></div>
+                    <ul>
+                        <li><i class="fas fa-check"></i> 10 swaps per day</li>
+                        <li><i class="fas fa-check"></i> Standard quality</li>
+                        <li><i class="fas fa-check"></i> Basic influencers</li>
+                        <li><i class="fas fa-times"></i> HD downloads</li>
+                        <li><i class="fas fa-times"></i> Priority processing</li>
+                    </ul>
+                    <button class="btn btn-outline">Get Started</button>
+                </div>
+                
+                <div class="plan popular">
+                    <div class="popular-tag">Most Popular</div>
+                    <h3>Pro Plan</h3>
+                    <div class="price">$9<span>/month</span></div>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Unlimited swaps</li>
+                        <li><i class="fas fa-check"></i> High quality results</li>
+                        <li><i class="fas fa-check"></i> 100+ AI influencers</li>
+                        <li><i class="fas fa-check"></i> HD downloads</li>
+                        <li><i class="fas fa-check"></i> Priority processing</li>
+                    </ul>
+                    <button class="btn btn-primary">Go Pro</button>
+                </div>
+                
+                <div class="plan">
+                    <h3>Enterprise</h3>
+                    <div class="price">Custom</div>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Unlimited everything</li>
+                        <li><i class="fas fa-check"></i> Ultra HD quality</li>
+                        <li><i class="fas fa-check"></i> Custom AI influencers</li>
+                        <li><i class="fas fa-check"></i> API access</li>
+                        <li><i class="fas fa-check"></i> Dedicated support</li>
+                    </ul>
+                    <button class="btn btn-outline">Contact Sales</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <div class="logo">
+                        <i class="fas fa-sync-alt"></i>
+                        <span>FaceSwap AI</span>
+                    </div>
+                    <p>Creating the most realistic and accessible face swapping technology for everyone.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#swap">Face Swap</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#about">About Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">Copyright Notice</a></li>
+                        <li><a href="#">Content Guidelines</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> support@faceswapai.com</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-map-marker-alt"></i> San Francisco, CA</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 FaceSwap AI. All rights reserved. This is a demo website for educational purposes.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simulate face swap functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Upload functionality
+            const sourceUpload = document.getElementById('source-upload');
+            const targetUpload = document.getElementById('target-upload');
+            const sourcePreview = document.getElementById('source-preview');
+            const targetPreview = document.getElementById('target-preview');
+            const resultImage = document.getElementById('result-image');
+            const swapBtn = document.getElementById('swap-btn');
+            const downloadBtn = document.getElementById('download-btn');
+            
+            // Sample influencer images
+            const influencers = [
+                'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&w=300',
+                'https://images.unsplash.com/photo-1494790108377-be9c29b29330?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&w=300',
+                'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&w=300',
+                'https://images.unsplash.com/photo-1516726817505-f5ed825624d8?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&w=300'
+            ];
+            
+            // Source upload
+            sourceUpload.addEventListener('click', function() {
+                // In a real app, this would open a file dialog
+                sourcePreview.src = 'https://images.unsplash.com/photo-1504593811423-6dd665756598?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&w=300';
+                sourcePreview.style.display = 'block';
+                this.querySelector('i').style.display = 'none';
+                this.querySelector('h3').style.display = 'none';
+                this.querySelector('p').style.display = 'none';
+            });
+            
+            // Target upload (select influencer)
+            targetUpload.addEventListener('click', function() {
+                // Random influencer
+                const randomInfluencer = influencers[Math.floor(Math.random() * influencers.length)];
+                targetPreview.src = randomInfluencer;
+                targetPreview.style.display = 'block';
+                this.querySelector('i').style.display = 'none';
+                this.querySelector('h3').style.display = 'none';
+                this.querySelector('p').style.display = 'none';
+            });
+            
+            // Swap button
+            swapBtn.addEventListener('click', function() {
+                if (!sourcePreview.src || !targetPreview.src) {
+                    alert('Please upload both a source photo and select an influencer');
+                    return;
+                }
+                
+                // Show processing
+                swapBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+                swapBtn.disabled = true;
+                
+                // Simulate processing time
+                setTimeout(() => {
+                    // Show result
+                    resultImage.src = 'https://images.unsplash.com/photo-1521119989659-a83eee488004?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=400&w=400';
+                    resultImage.style.display = 'block';
+                    downloadBtn.style.display = 'block';
+                    
+                    // Reset button
+                    swapBtn.innerHTML = 'Swap Faces Now';
+                    swapBtn.disabled = false;
+                    
+                    // Scroll to result
+                    resultImage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 2000);
+            });
+            
+            // Download button
+            downloadBtn.addEventListener('click', function() {
+                alert('In a real application, this would download your face swap result!');
+            });
+        });
+    </script>
+</body>
+</html>
