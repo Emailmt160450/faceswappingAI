@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FaceSwap AI | Free AI Face Swapping</title>
+    <title>Punjab Flood Relief - Help Those in Need</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -14,838 +14,943 @@
         }
 
         :root {
-            --primary: #6c63ff;
-            --primary-dark: #5a52e0;
-            --secondary: #ff6584;
-            --dark: #1e1e2d;
-            --light: #f8f9fa;
-            --gray: #6c757d;
-            --success: #28a745;
+            --primary: #3498db;
+            --secondary: #2c3e50;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
         }
 
         body {
-            background: linear-gradient(135deg, #1e1e2d, #2d2d44);
-            color: var(--light);
+            background-color: #f9f9f9;
+            color: #333;
             line-height: 1.6;
-            min-height: 100vh;
-            overflow-x: hidden;
-            position: relative;
         }
 
-        body::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 10% 20%, rgba(108, 99, 255, 0.1) 0%, transparent 20%),
-                radial-gradient(circle at 90% 80%, rgba(255, 101, 132, 0.1) 0%, transparent 20%);
-            z-index: -1;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header Styles */
         header {
-            padding: 20px 0;
-            background: rgba(30, 30, 45, 0.8);
-            backdrop-filter: blur(10px);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--light);
-        }
-
-        .logo i {
-            color: var(--primary);
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-        }
-
-        nav a {
-            color: var(--light);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-            position: relative;
-        }
-
-        nav a:hover {
-            color: var(--primary);
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            transition: width 0.3s;
-        }
-
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        .auth-buttons {
-            display: flex;
-            gap: 15px;
-        }
-
-        .btn {
-            padding: 10px 25px;
-            border-radius: 50px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            border: none;
-            outline: none;
-            font-size: 1rem;
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--primary);
-            color: var(--primary);
-        }
-
-        .btn-outline:hover {
-            background: var(--primary);
+            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('https://images.unsplash.com/photo-1593113630400-ea4288922497?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80') no-repeat center center/cover;
             color: white;
-        }
-
-        .btn-primary {
-            background: var(--primary);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(108, 99, 255, 0.3);
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 100px 0 70px;
             text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            line-height: 1.2;
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            max-width: 700px;
-            margin: 0 auto 40px;
-            color: #d0d0e0;
-        }
-
-        .hero-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 30px;
-        }
-
-        .btn-secondary {
-            background: var(--secondary);
-            color: white;
-        }
-
-        .btn-secondary:hover {
-            background: #e55a76;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(255, 101, 132, 0.3);
-        }
-
-        .features {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin-top: 50px;
-            flex-wrap: wrap;
-        }
-
-        .feature {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 25px;
-            width: 250px;
-            text-align: center;
-            transition: transform 0.3s;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .feature:hover {
-            transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.08);
-        }
-
-        .feature i {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            color: var(--primary);
-        }
-
-        .feature h3 {
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-        }
-
-        /* Face Swap Section */
-        .face-swap {
-            padding: 100px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-            font-size: 2.5rem;
-        }
-
-        .swap-container {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .swap-interface {
-            display: flex;
-            justify-content: space-between;
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .upload-area {
-            flex: 1;
-            text-align: center;
-        }
-
-        .upload-box {
-            height: 300px;
-            border: 2px dashed rgba(255, 255, 255, 0.2);
-            border-radius: 15px;
+            padding: 2rem;
+            height: 80vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            cursor: pointer;
-            transition: all 0.3s;
-            margin-bottom: 20px;
-            position: relative;
-            overflow: hidden;
         }
 
-        .upload-box:hover {
-            border-color: var(--primary);
+        .logo {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
         }
 
-        .upload-box i {
-            font-size: 4rem;
-            margin-bottom: 20px;
-            color: var(--primary);
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
-        .upload-box h3 {
-            margin-bottom: 10px;
-        }
-
-        .upload-box p {
-            color: var(--gray);
-            font-size: 0.9rem;
-        }
-
-        .preview-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            position: absolute;
-            top: 0;
-            left: 0;
-            display: none;
-        }
-
-        .swap-arrow {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: var(--primary);
-        }
-
-        .swap-controls {
-            text-align: center;
-        }
-
-        .result-container {
-            text-align: center;
-            margin-top: 40px;
-            padding-top: 40px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .result-image {
-            max-width: 100%;
-            border-radius: 15px;
-            display: none;
-            margin: 0 auto 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .download-btn {
-            display: none;
+        .header-content {
+            max-width: 800px;
             margin: 0 auto;
         }
 
-        /* Pricing Section */
-        .pricing {
-            padding: 100px 0;
-            background: rgba(0, 0, 0, 0.1);
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            margin-top: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
         }
 
-        .pricing-plans {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 50px;
-            flex-wrap: wrap;
+        .btn:hover {
+            background: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
-        .plan {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 40px 30px;
-            width: 300px;
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
             text-align: center;
-            transition: transform 0.3s;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .plan.popular {
-            border: 2px solid var(--primary);
-            transform: scale(1.05);
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--secondary);
             position: relative;
         }
 
-        .popular-tag {
-            position: absolute;
-            top: -15px;
-            left: 50%;
-            transform: translateX(-50%);
+        h2:after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 5px;
+            background: var(--primary);
+            margin: 10px auto;
+        }
+
+        .about {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .impact {
+            background-color: var(--light);
+        }
+
+        .stats {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-box {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            flex: 1;
+            min-width: 200px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-box i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--accent);
+            margin: 10px 0;
+        }
+
+        .donation-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        .donation-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            flex: 1;
+            min-width: 300px;
+            max-width: 350px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .donation-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card-header {
             background: var(--primary);
             color: white;
-            padding: 5px 20px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 600;
+            padding: 1.5rem;
+            text-align: center;
+            font-size: 1.5rem;
         }
 
-        .plan h3 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
+        .card-body {
+            padding: 2rem;
         }
 
-        .plan .price {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 30px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .card-body ul {
+            list-style-type: none;
+            margin: 1rem 0;
         }
 
-        .plan .price span {
-            font-size: 1rem;
-            color: var(--gray);
+        .card-body li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
         }
 
-        .plan ul {
-            list-style: none;
-            margin-bottom: 30px;
-        }
-
-        .plan ul li {
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .plan ul li:last-child {
+        .card-body li:last-child {
             border-bottom: none;
         }
 
-        .plan ul li i {
+        .card-body li i {
+            color: var(--primary);
             margin-right: 10px;
-            color: var(--success);
         }
 
-        /* Footer */
+        .testimonials {
+            background-color: var(--secondary);
+            color: white;
+        }
+
+        .testimonial-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        .testimonial {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 10px;
+            flex: 1;
+            min-width: 300px;
+            max-width: 350px;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            text-align: right;
+        }
+
+        .faq {
+            background-color: white;
+        }
+
+        .accordion {
+            margin-top: 2rem;
+        }
+
+        .accordion-item {
+            margin-bottom: 1rem;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .accordion-header {
+            background: var(--light);
+            padding: 1.5rem;
+            cursor: pointer;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .accordion-content {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .accordion-content.active {
+            max-height: 300px;
+            padding: 1.5rem;
+        }
+
+        .qr-section {
+            background: var(--light);
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        .qr-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .qr-code {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .qr-code img {
+            width: 220px;
+            height: 220px;
+            display: block;
+        }
+
+        .qr-info {
+            max-width: 500px;
+            text-align: left;
+        }
+
+        .payment-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            justify-content: center;
+        }
+
+        .payment-option {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: bold;
+        }
+
         footer {
-            padding: 70px 0 30px;
-            background: rgba(0, 0, 0, 0.2);
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
         }
 
         .footer-content {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 40px;
-            margin-bottom: 50px;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
-        .footer-col {
-            flex: 1;
-            min-width: 250px;
+        .social-icons {
+            margin: 2rem 0;
         }
 
-        .footer-col h3 {
-            font-size: 1.3rem;
-            margin-bottom: 20px;
-            position: relative;
-            padding-bottom: 10px;
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s ease;
         }
 
-        .footer-col h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 2px;
-            background: var(--primary);
-        }
-
-        .footer-col ul {
-            list-style: none;
-        }
-
-        .footer-col ul li {
-            margin-bottom: 15px;
-        }
-
-        .footer-col ul li a {
-            color: #d0d0e0;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .footer-col ul li a:hover {
+        .social-icons a:hover {
             color: var(--primary);
         }
 
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .social-links a {
-            display: flex;
-            align-items: center;
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
             justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            transition: all 0.3s;
+            align-items: center;
         }
 
-        .social-links a:hover {
-            background: var(--primary);
-            transform: translateY(-3px);
+        .modal-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
         }
 
-        .copyright {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: var(--gray);
+        .close-modal {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.5rem;
+            cursor: pointer;
         }
 
-        /* Responsive */
-        @media (max-width: 992px) {
-            .hero h1 {
-                font-size: 3rem;
-            }
-            
-            .swap-interface {
-                flex-direction: column;
-                gap: 30px;
-            }
-            
-            .swap-arrow {
-                transform: rotate(90deg);
-            }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        /* Admin Panel */
+        .admin-panel {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-top: 2rem;
+        }
+
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .admin-table th,
+        .admin-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .admin-table th {
+            background-color: var(--light);
         }
 
         @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                gap: 20px;
-            }
-            
-            .hero h1 {
+            h1 {
                 font-size: 2.5rem;
             }
             
-            .hero p {
-                font-size: 1.1rem;
+            section {
+                padding: 3rem 1rem;
             }
             
-            .hero-buttons {
+            .header-content {
+                padding: 0 1rem;
+            }
+            
+            .qr-container {
                 flex-direction: column;
-                align-items: center;
+                text-align: center;
             }
             
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .swap-container {
-                padding: 20px;
-            }
-            
-            .features, .pricing-plans {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
-
-        @media (max-width: 576px) {
-            nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            
-            .auth-buttons {
-                width: 100%;
-                justify-content: center;
-            }
-            
-            .hero h1 {
-                font-size: 2rem;
+            .qr-info {
+                text-align: center;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header>
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <i class="fas fa-sync-alt"></i>
-                    <span>FaceSwap AI</span>
-                </div>
-                <nav>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#swap">Face Swap</a></li>
-                        <li><a href="#pricing">Pricing</a></li>
-                        <li><a href="#features">Features</a></li>
-                        <li><a href="#about">About</a></li>
-                    </ul>
-                </nav>
-                <div class="auth-buttons">
-                    <button class="btn btn-outline">Sign In</button>
-                    <button class="btn btn-primary">Sign Up</button>
-                </div>
-            </div>
+        <div class="logo">
+            <i class="fas fa-hands-helping"></i> Punjab Relief
+        </div>
+        <div class="header-content">
+            <h1>Help Punjab Flood Victims</h1>
+            <p>Thousands of families in Punjab are suffering from devastating floods. Your donation can provide critical aid like food, clean water, and shelter to those affected by this natural disaster.</p>
+            <a href="#donate" class="btn">Donate Now</a>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container">
-            <h1>Swap Faces with AI Influencers in Seconds</h1>
-            <p>Experience the most realistic face swapping technology for free. Create hilarious memes, viral content, and professional media with our AI-powered platform.</p>
-            <div class="hero-buttons">
-                <button class="btn btn-primary">Swap Faces Now</button>
-                <button class="btn btn-secondary">View Examples</button>
+    <section class="about">
+        <h2>About the Disaster</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>In recent weeks, unprecedented monsoon rains have caused severe flooding across multiple districts in Punjab, Pakistan. The flooding has resulted in significant damage to infrastructure, homes, and agricultural land.</p>
+                <p>Over 2 million people have been affected, with many losing their homes, livelihoods, and access to basic necessities. The situation continues to be critical as water levels remain high and more rain is forecasted.</p>
+                <p>Our mission is to provide immediate relief to those affected by distributing food, clean water, medical supplies, and temporary shelter. With your support, we can help the people of Punjab recover from this devastating natural disaster.</p>
             </div>
-            
-            <div class="features">
-                <div class="feature">
-                    <i class="fas fa-bolt"></i>
-                    <h3>Lightning Fast</h3>
-                    <p>Swap faces in under 10 seconds with our optimized AI</p>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1589652717521-10c0d092dea9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" alt="Flood affected area in Punjab">
+            </div>
+        </div>
+    </section>
+
+    <section class="impact">
+        <h2>Our Impact So Far</h2>
+        <div class="stats">
+            <div class="stat-box">
+                <i class="fas fa-users"></i>
+                <div class="stat-number">25,000+</div>
+                <div class="stat-desc">People Helped</div>
+            </div>
+            <div class="stat-box">
+                <i class="fas fa-home"></i>
+                <div class="stat-number">5,200+</div>
+                <div class="stat-desc">Shelters Provided</div>
+            </div>
+            <div class="stat-box">
+                <i class="fas fa-utensils"></i>
+                <div class="stat-number">75,000+</div>
+                <div class="stat-desc">Meals Distributed</div>
+            </div>
+            <div class="stat-box">
+                <i class="fas fa-tint"></i>
+                <div class="stat-number">50,000+</div>
+                <div class="stat-desc">Clean Water Kits</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="donate" class="donate">
+        <h2>How You Can Help</h2>
+        <div class="donation-options">
+            <div class="donation-card">
+                <div class="card-header">Essential Supplies</div>
+                <div class="card-body">
+                    <p>Provide immediate relief with essential items:</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Food packages</li>
+                        <li><i class="fas fa-check"></i> Clean water</li>
+                        <li><i class="fas fa-check"></i> Medical kits</li>
+                        <li><i class="fas fa-check"></i> Hygiene supplies</li>
+                    </ul>
+                    <a href="#" class="btn" onclick="openModal('supplies')">Donate Supplies</a>
                 </div>
-                <div class="feature">
-                    <i class="fas fa-lock-open"></i>
-                    <h3>Free to Use</h3>
-                    <p>Unlimited swaps with our free tier. No credit card needed</p>
+            </div>
+            <div class="donation-card">
+                <div class="card-header">Monetary Donation</div>
+                <div class="card-body">
+                    <p>Financial support allows us to respond quickly:</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Emergency shelter</li>
+                        <li><i class="fas fa-check"></i> Medical assistance</li>
+                        <li><i class="fas fa-check"></i> Food and water</li>
+                        <li><i class="fas fa-check"></i> Long-term recovery</li>
+                    </ul>
+                    <a href="#" class="btn" onclick="openModal('monetary')">Donate Money</a>
                 </div>
-                <div class="feature">
-                    <i class="fas fa-shield-alt"></i>
-                    <h3>Privacy Focused</h3>
-                    <p>Your images are never stored or shared with anyone</p>
+            </div>
+            <div class="donation-card">
+                <div class="card-header">Volunteer</div>
+                <div class="card-body">
+                    <p>Join our efforts on the ground:</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Distribution support</li>
+                        <li><i class="fas fa-check"></i> Relief coordination</li>
+                        <li><i class="fas fa-check"></i> Community outreach</li>
+                        <li><i class="fas fa-check"></i> Recovery programs</li>
+                    </ul>
+                    <a href="#" class="btn" onclick="openModal('volunteer')">Volunteer Now</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Face Swap Section -->
-    <section class="face-swap" id="swap">
-        <div class="container">
-            <h2 class="section-title">AI Face Swap Generator</h2>
-            <div class="swap-container">
-                <div class="swap-interface">
-                    <div class="upload-area">
-                        <h3>Upload Your Photo</h3>
-                        <div class="upload-box" id="source-upload">
-                            <i class="fas fa-cloud-upload-alt"></i>
-                            <h3>Drag & Drop</h3>
-                            <p>or click to browse</p>
-                            <img class="preview-image" id="source-preview" src="" alt="Source Preview">
-                        </div>
-                        <button class="btn btn-outline" id="source-btn">Choose File</button>
+    <section class="qr-section">
+        <h2>Quick Donate with UPI</h2>
+        <div class="qr-container">
+            <div class="qr-code">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=upi://pay?pa=9306444468@axl&pn=Punjab%20Flood%20Relief&cu=INR" alt="Donation QR Code">
+                <p>Scan to donate instantly</p>
+                <p><strong>UPI ID: 9306444468@axl</strong></p>
+            </div>
+            <div class="qr-info">
+                <h3>Instant Support for Punjab Flood Victims</h3>
+                <p>Use your UPI app to scan the QR code and make a direct donation to our relief fund. Your contribution will provide immediate assistance to those affected by the devastating floods in Punjab.</p>
+                <p>100% of your donation goes directly to relief efforts, providing:</p>
+                <ul>
+                    <li><i class="fas fa-check"></i> Emergency food and clean water</li>
+                    <li><i class="fas fa-check"></i> Medical supplies and healthcare</li>
+                    <li><i class="fas fa-check"></i> Temporary shelter and blankets</li>
+                    <li><i class="fas fa-check"></i> Long-term recovery programs</li>
+                </ul>
+                <div class="payment-options">
+                    <div class="payment-option">
+                        <i class="fas fa-mobile-alt"></i> <span>Google Pay</span>
                     </div>
-                    
-                    <div class="swap-arrow">
-                        <i class="fas fa-exchange-alt"></i>
+                    <div class="payment-option">
+                        <i class="fas fa-money-bill-wave"></i> <span>PhonePe</span>
                     </div>
-                    
-                    <div class="upload-area">
-                        <h3>Choose AI Influencer</h3>
-                        <div class="upload-box" id="target-upload">
-                            <i class="fas fa-user-circle"></i>
-                            <h3>Select Influencer</h3>
-                            <p>or upload your own</p>
-                            <img class="preview-image" id="target-preview" src="" alt="Target Preview">
-                        </div>
-                        <button class="btn btn-outline" id="target-btn">Select Influencer</button>
+                    <div class="payment-option">
+                        <i class="fas fa-university"></i> <span>Paytm</span>
                     </div>
-                </div>
-                
-                <div class="swap-controls">
-                    <button class="btn btn-primary" id="swap-btn">Swap Faces Now</button>
-                    <div class="result-container">
-                        <img class="result-image" id="result-image" src="" alt="Result">
-                        <button class="btn btn-secondary download-btn" id="download-btn">
-                            <i class="fas fa-download"></i> Download Result
-                        </button>
+                    <div class="payment-option">
+                        <i class="fas fa-mobile"></i> <span>BHIM UPI</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Pricing Section -->
-    <section class="pricing" id="pricing">
-        <div class="container">
-            <h2 class="section-title">Simple & Transparent Pricing</h2>
-            <div class="pricing-plans">
-                <div class="plan">
-                    <h3>Free Tier</h3>
-                    <div class="price">$0<span>/month</span></div>
-                    <ul>
-                        <li><i class="fas fa-check"></i> 10 swaps per day</li>
-                        <li><i class="fas fa-check"></i> Standard quality</li>
-                        <li><i class="fas fa-check"></i> Basic influencers</li>
-                        <li><i class="fas fa-times"></i> HD downloads</li>
-                        <li><i class="fas fa-times"></i> Priority processing</li>
-                    </ul>
-                    <button class="btn btn-outline">Get Started</button>
+    <section class="testimonials">
+        <h2>Stories from the Ground</h2>
+        <div class="testimonial-container">
+            <div class="testimonial">
+                <div class="testimonial-text">
+                    "The flood washed away our home and everything we owned. Thanks to the relief efforts, we have food, clean water, and a temporary shelter. We're grateful for the support."
                 </div>
-                
-                <div class="plan popular">
-                    <div class="popular-tag">Most Popular</div>
-                    <h3>Pro Plan</h3>
-                    <div class="price">$9<span>/month</span></div>
-                    <ul>
-                        <li><i class="fas fa-check"></i> Unlimited swaps</li>
-                        <li><i class="fas fa-check"></i> High quality results</li>
-                        <li><i class="fas fa-check"></i> 100+ AI influencers</li>
-                        <li><i class="fas fa-check"></i> HD downloads</li>
-                        <li><i class="fas fa-check"></i> Priority processing</li>
-                    </ul>
-                    <button class="btn btn-primary">Go Pro</button>
+                <div class="testimonial-author">- Amrit Singh, affected resident</div>
+            </div>
+            <div class="testimonial">
+                <div class="testimonial-text">
+                    "As a volunteer, I've seen firsthand how donations are making a difference. Every contribution, no matter how small, helps provide critical aid to those who need it most."
                 </div>
-                
-                <div class="plan">
-                    <h3>Enterprise</h3>
-                    <div class="price">Custom</div>
-                    <ul>
-                        <li><i class="fas fa-check"></i> Unlimited everything</li>
-                        <li><i class="fas fa-check"></i> Ultra HD quality</li>
-                        <li><i class="fas fa-check"></i> Custom AI influencers</li>
-                        <li><i class="fas fa-check"></i> API access</li>
-                        <li><i class="fas fa-check"></i> Dedicated support</li>
-                    </ul>
-                    <button class="btn btn-outline">Contact Sales</button>
+                <div class="testimonial-author">- Priya Sharma, volunteer</div>
+            </div>
+            <div class="testimonial">
+                <div class="testimonial-text">
+                    "Our medical team has been able to treat hundreds of patients thanks to donated supplies. The need is still great, but we're making progress every day."
+                </div>
+                <div class="testimonial-author">- Dr. Raj Patel, medical volunteer</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq">
+        <h2>Frequently Asked Questions</h2>
+        <div class="accordion">
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    How will my donation be used? <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="accordion-content">
+                    <p>Your donation will be used to provide immediate relief to flood victims, including food, clean water, medical supplies, and temporary shelter. We ensure that over 90% of all donations go directly to relief efforts.</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    Is my donation tax-deductible? <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="accordion-content">
+                    <p>Yes, Punjab Relief is a registered nonprofit organization, and all donations are tax-deductible to the extent allowed by law. You will receive a receipt for your records.</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    How can I volunteer to help? <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="accordion-content">
+                    <p>We welcome volunteers! Please click on the "Volunteer Now" button above and fill out the application form. We'll contact you with available opportunities based on your skills and the current needs.</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    How can I get updates on your relief efforts? <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="accordion-content">
+                    <p>We regularly update our website and social media channels with information about our relief efforts. You can also sign up for our newsletter to receive updates directly to your inbox.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Admin Panel Section (Hidden by default) -->
+    <section id="admin-section" class="admin" style="display: none;">
+        <h2>Admin Panel</h2>
+        <div class="admin-panel">
+            <h3>Donation Records</h3>
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Type</th>
+                        <th>Amount/Items</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody id="donation-records">
+                    <!-- Donation records will be populated here -->
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Modal for donation forms -->
+    <div id="donation-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <h2 id="modal-title">Donate Now</h2>
+            <form id="donation-form">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" required>
+                </div>
+                <div id="amount-group" class="form-group">
+                    <label for="amount">Donation Amount (₹)</label>
+                    <input type="number" id="amount" min="1" required>
+                </div>
+                <div id="items-group" class="form-group" style="display: none;">
+                    <label for="items">Items you want to donate</label>
+                    <textarea id="items" rows="3" placeholder="List the items you want to donate"></textarea>
+                </div>
+                <div id="skills-group" class="form-group" style="display: none;">
+                    <label for="skills">Your Skills/Expertise</label>
+                    <textarea id="skills" rows="3" placeholder="Describe how you can help as a volunteer"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message (Optional)</label>
+                    <textarea id="message" rows="3" placeholder="Any additional information"></textarea>
+                </div>
+                <button type="submit" class="btn">Submit Donation</button>
+            </form>
+        </div>
+    </div>
+
     <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-col">
-                    <div class="logo">
-                        <i class="fas fa-sync-alt"></i>
-                        <span>FaceSwap AI</span>
-                    </div>
-                    <p>Creating the most realistic and accessible face swapping technology for everyone.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-tiktok"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-col">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#swap">Face Swap</a></li>
-                        <li><a href="#pricing">Pricing</a></li>
-                        <li><a href="#features">Features</a></li>
-                        <li><a href="#about">About Us</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h3>Legal</h3>
-                    <ul>
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Cookie Policy</a></li>
-                        <li><a href="#">Copyright Notice</a></li>
-                        <li><a href="#">Content Guidelines</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h3>Contact Us</h3>
-                    <ul>
-                        <li><i class="fas fa-envelope"></i> support@faceswapai.com</li>
-                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
-                        <li><i class="fas fa-map-marker-alt"></i> San Francisco, CA</li>
-                    </ul>
-                </div>
+        <div class="footer-content">
+            <h3>Punjab Flood Relief</h3>
+            <p>Together, we can help the people of Punjab recover from this devastating flood.</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
             </div>
-            
-            <div class="copyright">
-                <p>&copy; 2023 FaceSwap AI. All rights reserved. This is a demo website for educational purposes.</p>
-            </div>
+            <p>Contact us: info@punjabrelief.org | +92 300 1234567</p>
+            <p>© 2023 Punjab Relief. All rights reserved.</p>
+            <p style="margin-top: 20px;">
+                <a href="#" onclick="showAdminPanel()" style="color: #ccc; text-decoration: none;">Admin Login</a>
+            </p>
         </div>
     </footer>
 
     <script>
-        // Simulate face swap functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            // Upload functionality
-            const sourceUpload = document.getElementById('source-upload');
-            const targetUpload = document.getElementById('target-upload');
-            const sourcePreview = document.getElementById('source-preview');
-            const targetPreview = document.getElementById('target-preview');
-            const resultImage = document.getElementById('result-image');
-            const swapBtn = document.getElementById('swap-btn');
-            const downloadBtn = document.getElementById('download-btn');
-            
-            // Sample influencer images
-            const influencers = [
-                'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&w=300',
-                'https://images.unsplash.com/photo-1494790108377-be9c29b29330?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&w=300',
-                'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&w=300',
-                'https://images.unsplash.com/photo-1516726817505-f5ed825624d8?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&w=300'
-            ];
-            
-            // Source upload
-            sourceUpload.addEventListener('click', function() {
-                // In a real app, this would open a file dialog
-                sourcePreview.src = 'https://images.unsplash.com/photo-1504593811423-6dd665756598?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&w=300';
-                sourcePreview.style.display = 'block';
-                this.querySelector('i').style.display = 'none';
-                this.querySelector('h3').style.display = 'none';
-                this.querySelector('p').style.display = 'none';
+        // Backend simulation using localStorage
+        const initializeBackend = () => {
+            if (!localStorage.getItem('donations')) {
+                localStorage.setItem('donations', JSON.stringify([]));
+            }
+        };
+
+        // Save donation to localStorage
+        const saveDonation = (donation) => {
+            const donations = JSON.parse(localStorage.getItem('donations')) || [];
+            donation.id = Date.now(); // Unique ID
+            donation.date = new Date().toLocaleString();
+            donations.push(donation);
+            localStorage.setItem('donations', JSON.stringify(donations));
+            return donation;
+        };
+
+        // Get all donations
+        const getDonations = () => {
+            return JSON.parse(localStorage.getItem('donations')) || [];
+        };
+
+        // Accordion functionality
+        document.querySelectorAll('.accordion-header').forEach(button => {
+            button.addEventListener('click', () => {
+                const content = button.nextElementSibling;
+                
+                // Toggle active class
+                content.classList.toggle('active');
+                
+                // Change icon
+                const icon = button.querySelector('i');
+                if (content.classList.contains('active')) {
+                    icon.classList.remove('fa-chevron-down');
+                    icon.classList.add('fa-chevron-up');
+                } else {
+                    icon.classList.remove('fa-chevron-up');
+                    icon.classList.add('fa-chevron-down');
+                }
             });
+        });
+
+        // Modal functionality
+        let currentModalType = '';
+
+        function openModal(type) {
+            currentModalType = type;
+            const modal = document.getElementById('donation-modal');
+            const modalTitle = document.getElementById('modal-title');
+            const amountGroup = document.getElementById('amount-group');
+            const itemsGroup = document.getElementById('items-group');
+            const skillsGroup = document.getElementById('skills-group');
             
-            // Target upload (select influencer)
-            targetUpload.addEventListener('click', function() {
-                // Random influencer
-                const randomInfluencer = influencers[Math.floor(Math.random() * influencers.length)];
-                targetPreview.src = randomInfluencer;
-                targetPreview.style.display = 'block';
-                this.querySelector('i').style.display = 'none';
-                this.querySelector('h3').style.display = 'none';
-                this.querySelector('p').style.display = 'none';
+            // Reset form
+            document.getElementById('donation-form').reset();
+            
+            // Customize modal based on type
+            if (type === 'monetary') {
+                modalTitle.textContent = 'Make a Monetary Donation';
+                amountGroup.style.display = 'block';
+                itemsGroup.style.display = 'none';
+                skillsGroup.style.display = 'none';
+            } else if (type === 'supplies') {
+                modalTitle.textContent = 'Donate Essential Supplies';
+                amountGroup.style.display = 'none';
+                itemsGroup.style.display = 'block';
+                skillsGroup.style.display = 'none';
+            } else if (type === 'volunteer') {
+                modalTitle.textContent = 'Volunteer Application';
+                amountGroup.style.display = 'none';
+                itemsGroup.style.display = 'none';
+                skillsGroup.style.display = 'block';
+            }
+            
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('donation-modal').style.display = 'none';
+        }
+
+        // Handle form submission
+        document.getElementById('donation-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const message = document.getElementById('message').value;
+            
+            let donationData = {
+                name,
+                email,
+                phone,
+                message,
+                type: currentModalType
+            };
+            
+            if (currentModalType === 'monetary') {
+                donationData.amount = document.getElementById('amount').value;
+            } else if (currentModalType === 'supplies') {
+                donationData.items = document.getElementById('items').value;
+            } else if (currentModalType === 'volunteer') {
+                donationData.skills = document.getElementById('skills').value;
+            }
+            
+            // Save donation to backend simulation
+            saveDonation(donationData);
+            
+            // Show success message
+            alert('Thank you for your donation! We appreciate your support for Punjab flood relief efforts.');
+            
+            // Close modal
+            closeModal();
+        });
+
+        // Simple animation for stats
+        function animateStats() {
+            const statNumbers = document.querySelectorAll('.stat-number');
+            statNumbers.forEach(stat => {
+                const target = parseInt(stat.textContent);
+                let count = 0;
+                const duration = 2000; // ms
+                const frameDuration = 1000 / 60; // 60 fps
+                const totalFrames = Math.round(duration / frameDuration);
+                const increment = target / totalFrames;
+                
+                const timer = setInterval(() => {
+                    count += increment;
+                    if (count >= target) {
+                        stat.textContent = target + '+';
+                        clearInterval(timer);
+                    } else {
+                        stat.textContent = Math.round(count) + '+';
+                    }
+                }, frameDuration);
             });
+        }
+
+        // Admin panel functionality
+        function showAdminPanel() {
+            const password = prompt('Enter admin password:');
+            // Simple password check (in real application, use secure authentication)
+            if (password === 'admin123') {
+                document.getElementById('admin-section').style.display = 'block';
+                loadDonationRecords();
+                // Scroll to admin section
+                document.getElementById('admin-section').scrollIntoView();
+            } else {
+                alert('Invalid password');
+            }
+        }
+
+        function loadDonationRecords() {
+            const donations = getDonations();
+            const recordsBody = document.getElementById('donation-records');
+            recordsBody.innerHTML = '';
             
-            // Swap button
-            swapBtn.addEventListener('click', function() {
-                if (!sourcePreview.src || !targetPreview.src) {
-                    alert('Please upload both a source photo and select an influencer');
-                    return;
+            if (donations.length === 0) {
+                recordsBody.innerHTML = '<tr><td colspan="5" style="text-align: center;">No donation records found</td></tr>';
+                return;
+            }
+            
+            donations.forEach(donation => {
+                const row = document.createElement('tr');
+                
+                let details = '';
+                if (donation.type === 'monetary') {
+                    details = `₹${donation.amount}`;
+                } else if (donation.type === 'supplies') {
+                    details = donation.items.substring(0, 50) + '...';
+                } else if (donation.type === 'volunteer') {
+                    details = donation.skills.substring(0, 50) + '...';
                 }
                 
-                // Show processing
-                swapBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
-                swapBtn.disabled = true;
+                row.innerHTML = `
+                    <td>${donation.name}</td>
+                    <td>${donation.email}</td>
+                    <td>${donation.type}</td>
+                    <td>${details}</td>
+                    <td>${donation.date}</td>
+                `;
                 
-                // Simulate processing time
-                setTimeout(() => {
-                    // Show result
-                    resultImage.src = 'https://images.unsplash.com/photo-1521119989659-a83eee488004?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=400&w=400';
-                    resultImage.style.display = 'block';
-                    downloadBtn.style.display = 'block';
-                    
-                    // Reset button
-                    swapBtn.innerHTML = 'Swap Faces Now';
-                    swapBtn.disabled = false;
-                    
-                    // Scroll to result
-                    resultImage.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }, 2000);
+                recordsBody.appendChild(row);
+            });
+        }
+
+        // Initialize backend simulation when page loads
+        window.addEventListener('load', () => {
+            initializeBackend();
+            
+            // Trigger stats animation when in viewport
+            window.addEventListener('scroll', () => {
+                const statsSection = document.querySelector('.stats');
+                const position = statsSection.getBoundingClientRect();
+                
+                // Checking whether fully visible
+                if(position.top >= 0 && position.bottom <= window.innerHeight) {
+                    animateStats();
+                    // Remove event listener after triggering once
+                    window.removeEventListener('scroll', this);
+                }
             });
             
-            // Download button
-            downloadBtn.addEventListener('click', function() {
-                alert('In a real application, this would download your face swap result!');
+            // Close modal when clicking outside
+            window.addEventListener('click', (e) => {
+                const modal = document.getElementById('donation-modal');
+                if (e.target === modal) {
+                    closeModal();
+                }
             });
         });
     </script>
